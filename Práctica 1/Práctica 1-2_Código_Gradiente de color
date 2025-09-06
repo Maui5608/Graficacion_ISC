@@ -1,0 +1,29 @@
+// Constante para dirección vertical
+int Y_AXIS = 1;
+
+void setup() {
+  size(500, 500);
+
+  // Llamamos a la función con colores definidos por componentes RGB
+  gradient(255, 0, 0, 0, 0, 255); // Rojo a azul
+}
+
+// Función que genera el gradiente vertical
+void gradient(int r1, int g1, int b1, int r2, int g2, int b2) {
+  color c1 = color(r1, g1, b1);
+  color c2 = color(r2, g2, b2);
+  setGradient(0, 0, width, height, c1, c2, Y_AXIS);
+}
+
+// Función base tomada del ejemplo de Processing
+void setGradient(int x, int y, float w, float h, color c1, color c2, int axis) {
+
+  if (axis == Y_AXIS) {
+    for (int i = y; i <= y + h; i++) {
+      float inter = map(i, y, y + h, 0, 1);
+      color c = lerpColor(c1, c2, inter);
+      stroke(c);
+      line(x, i, x + w, i);
+    }
+  }
+}
