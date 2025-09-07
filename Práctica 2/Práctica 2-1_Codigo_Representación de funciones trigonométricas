@@ -1,1 +1,48 @@
+int w, h;
 
+void setup() {
+  size(480, 190);
+  w = width;
+  h = height;
+  background(0); // Fondo blanco
+  
+  //Linea del eje X
+  stroke(255);
+  line(0,h/2,w,h/2);
+  
+  //Linea del eje Y
+  stroke(255);
+  line(0,0,0,h);
+  
+  // Dibujar funciones
+  dibujarSeno(color(255, 0, 0), 2, w, h);
+  dibujarCoseno(color(0, 255, 0), 2, w, h);
+}
+
+void dibujarSeno(color c, float grosor, int w, int h) {
+  stroke(c);
+  strokeWeight(grosor);
+  float prevX = 0;
+  float prevY = h/2 - sin(0) * (h/2);
+  for (int x = 1; x <= w; x++) {
+    float angulo = map(x, 0, w, 0, TWO_PI);
+    float y = h/2 - sin(angulo) * (h/2);
+    line(prevX, prevY, x, y); // Conectar puntos con líneas
+    prevX = x;
+    prevY = y;
+  }
+}
+
+void dibujarCoseno(color c, float grosor, int w, int h) {
+  stroke(c);
+  strokeWeight(grosor);
+  float prevX = 0;
+  float prevY = h/2 - cos(0) * (h/2);
+  for (int x = 1; x <= w; x++) {
+    float angulo = map(x, 0, w, 0, TWO_PI);
+    float y = h/2 - cos(angulo) * (h/2);
+    line(prevX, prevY, x, y); // Conectar puntos con líneas
+    prevX = x;
+    prevY = y;
+  }
+}
