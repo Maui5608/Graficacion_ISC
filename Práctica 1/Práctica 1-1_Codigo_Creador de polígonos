@@ -4,7 +4,7 @@ void setup() {
   stroke(0); // Color del trazo: negro
   noFill(); // Sin relleno en el polígono
 
-  // Ejemplo: polígono centrado en (250, 250), radio 100, con 6 lados
+  // Ejemplo: polígono centrado en (250, 250), radio 100, con 5 lados
   poligon(250, 250, 100, 5);
 }
 
